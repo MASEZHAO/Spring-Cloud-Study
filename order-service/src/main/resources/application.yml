@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: order-service
+  cloud:
+    config:
+      profile: test
+      uri: http://localhost:8888
+      label: master
+  zipkin:
+    ## 添加zipkin跟踪服务地址
+    base-url: http://localhost:9411/
+
+  rabbitmq:
+      host: localhost
+      port: 5672
+      username: spring
+      password: 123456
+server:
+  port: 3331
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    # 表示eureka client发送心跳给server端的频率
+    lease-renewal-interval-in-seconds: 5
+    # 表示eureka server至上一次收到client的心跳之后，等待下一次心跳的超时时间
+    lease-expiration-duration-in-seconds: 15
+management:
+  security:
+    enabled : false  # 关闭安全访问
+feign:
+  hystrix:
+    enabled: true  #启动hystrix断容器功能
+
+

@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: config-service
+  #profiles:
+    # 表示采用本地存储配置方式
+    #active: native
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/MASEZHAO/config-repo
+          search-paths: order-service
+          username: cprogram05@126.com
+          password: mounting05
+    bus:
+      trace:
+        enabled: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: spring
+    password: 123456
+server:
+  port: 8888
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 40
+management:
+  security:
+    enabled: false
+
+
+
